@@ -1,18 +1,16 @@
 import os
-import sys
 import warnings
+
+import cvxpy as cp
 import numpy as np
 import torch
+import torch.distributions as dists
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.distributions as dists
-from torch.nn.functional import normalize
-from torch.distributions.multivariate_normal import MultivariateNormal
-import cvxpy as cp
 from cvxpylayers.torch import CvxpyLayer
 from toqito.matrices import gen_gell_mann
-
-
+from torch.distributions.multivariate_normal import MultivariateNormal
+from torch.nn.functional import normalize
 
 warnings.filterwarnings('ignore')
 
@@ -187,7 +185,7 @@ def E2Lo():
     __initialize_Ns__()
 
     global Ns
-    # reshape in cvxpy rearranges elements clolumn by clolumn, so transpose (.T) is needed
+    # reshape in cvxpy rearranges elements column by column, so transpose (.T) is needed
     PU_lo = cp.reshape(P_lo[0], (1, size**2))
     MU_lo = cp.reshape(PU_lo @ Ns, (size, size)).T
     PC_lo = cp.reshape(P_lo[1], (1, size**2))

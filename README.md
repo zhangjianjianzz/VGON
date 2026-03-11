@@ -29,7 +29,7 @@ This guide provides instructions for setting up the VGON (Variational Generative
     ```
 3. Install dependecies in `.venv` for VGON scripts 
     ```bash
-    uv sync --extra all
+    uv sync --extra full
     ```
     `plot` and `notebook` groups are optional for VGON itself. 
 
