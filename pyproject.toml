@@ -75,7 +75,7 @@ include = ["vgon", "vgon.*"]
 exclude = ["tests", "docs"]
 # package-data-rule
 [tool.setuptools.package-data]
-vgon = ["Examples/**/*.mat", "Examples/**/*.csv", "Examples/**/*.json"]
+vgon = ["**/*.mat", "**/*.csv", "**/*.json"]
 [tool.setuptools_scm]
 write_to = "src/vgon/_version.py"
 version_scheme = "guess-next-dev"
