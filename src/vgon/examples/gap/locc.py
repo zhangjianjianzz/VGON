@@ -1,7 +1,7 @@
 import cvxpy as cp
 import numpy as np
 
-from . import __initialize_Ns__
+from .ns import __initialize_Ns__
 
 
 def E2Locc():
@@ -19,8 +19,8 @@ def E2Locc():
     M1_locc = cp.Variable((size, size), hermitian=True)
     e2_locc = cp.Variable(1, nonneg=True)
     # construct MC, MU
-    __initialize_Ns__()
-    global Ns
+    Ns = __initialize_Ns__()
+
 
     # reshape in cvxpy rearranges elements clolumn by clolumn, so transpose (.T) is needed
     PU_locc = cp.reshape(P_locc[0], (1, size**2))

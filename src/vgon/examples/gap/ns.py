@@ -40,3 +40,5 @@ def __initialize_Ns__():
                 for a in range(A):
                     for b in range(A):
                         Ns[x * (X * A**2) + y * A**2 + a * A + b, :] = np.kron(N_xa[x][a], N_xa[y][b]).reshape(-1)
+
+    return Ns

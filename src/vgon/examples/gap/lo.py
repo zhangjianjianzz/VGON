@@ -1,7 +1,7 @@
 import cvxpy as cp
 import numpy as np
 
-from . import __initialize_Ns__
+from .ns import __initialize_Ns__
 
 
 def E2Lo():
@@ -19,8 +19,7 @@ def E2Lo():
     M1_lo = cp.Variable((size, size), hermitian=True)
     e2_lo = cp.Variable(1, nonneg=True)
     # construct MC, MU
-    __initialize_Ns__()
-    global Ns
+    Ns = __initialize_Ns__()
 
     # reshape in cvxpy rearranges elements column by column, so transpose (.T) is needed
     PU_lo = cp.reshape(P_lo[0], (1, size**2))
