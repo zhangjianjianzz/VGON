@@ -4,6 +4,10 @@ on:
     tags:
       - 'v*.*.*'
 
+concurrency:
+  group: pypi-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -11,16 +15,23 @@ jobs:
 
     permissions:
       id-token: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: true
 
       - uses: astral-sh/setup-uv@v5
 
       - name: Build
         run: uv build
 
-      - name: Publish
+      - name: Check metadata
+        run: python -m pip install -U twine && python -m twine check dist/*
+
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
