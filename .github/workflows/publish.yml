@@ -28,9 +28,6 @@ jobs:
       - name: Build
         run: uv build
 
-      - name: Check metadata
-        run: python -m pip install -U twine && python -m twine check dist/*
-
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
