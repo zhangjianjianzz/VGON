@@ -27,7 +27,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "cvxpy",
+    "cvxpy>=1.7.2",
     "numpy",
 ]
 
