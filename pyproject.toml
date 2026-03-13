@@ -67,15 +67,15 @@ full = [
 # package-location
 [tool.setuptools]
 package-dir = {"" = "src"}
-include-package-data = true
+include-package-data = false
 # package-name-rule
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["vgon", "vgon.*"]
 exclude = ["tests", "docs"]
 # package-data-rule
-[tool.setuptools.package-data]
-vgon = ["**/*.mat", "**/*.csv", "**/*.json"]
+#[tool.setuptools.package-data]
+#vgon = ["vgon/**/*.mat", "vgon/**/*.csv", "vgon/**/*.json"]
 [tool.setuptools_scm]
 write_to = "src/vgon/_version.py"
 version_scheme = "guess-next-dev"
