@@ -22,7 +22,7 @@ def E2Locc():
     Ns = __initialize_Ns__()
 
 
-    # reshape in cvxpy rearranges elements clolumn by clolumn, so transpose (.T) is needed
+    # reshape in cvxpy rearranges elements column by column, so transpose (.T) is needed
     PU_locc = cp.reshape(P_locc[0], (1, size**2))
     MU_locc = cp.reshape(PU_locc @ Ns, (size, size)).T
     PC_locc = cp.reshape(P_locc[1], (1, size**2))
