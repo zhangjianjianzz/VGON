@@ -6,13 +6,30 @@ build-backend = "setuptools.build_meta"
 name = "vgon"
 dynamic = ["version"]
 description = "Variational Generative Optimization Network (VGON)."
+readme = "README.md"
 authors = [
     {name = "Lingxia Zhang"},
     {name = "Xiaodie Lin"}
 ]
 requires-python = ">=3.11"
 
-dependencies = []
+license = { file = "LICENSE" }
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License"
+]
+
+dependencies = [
+    "cvxpy",
+    "numpy",
+]
 
 [project.optional-dependencies]
 core = [
