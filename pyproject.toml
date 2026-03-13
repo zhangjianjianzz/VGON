@@ -1,18 +1,39 @@
+[build-system]
+requires = ["setuptools>=65.5.0", "wheel>=0.38.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "vgon"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Variational Generative Optimization Network (VGON)."
+readme = "README.md"
 authors = [
     {name = "Lingxia Zhang"},
     {name = "Xiaodie Lin"}
 ]
 requires-python = ">=3.11"
 
-dependencies = []
+license = "MIT"
+license-files = ["LICENSE"]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "cvxpy>=1.7.2",
+    "numpy",
+]
 
 [project.optional-dependencies]
 core = [
-        "torch",
+    "torch",
     "toqito>=1.1.2",
     "cvxpy>=1.7.2",
     "cvxpylayers>=0.1.9",
@@ -42,10 +63,23 @@ full = [
     "vgon[core,plot,notebook,doc]"
 ]
 
-# do NOT pack anything.
+
+# package-location
 [tool.setuptools]
-packages = []
-py-modules = []
+package-dir = {"" = "src"}
+include-package-data = false
+# package-name-rule
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["vgon", "vgon.*"]
+exclude = ["tests", "docs"]
+# package-data-rule
+#[tool.setuptools.package-data]
+#vgon = ["vgon/**/*.mat", "vgon/**/*.csv", "vgon/**/*.json"]
+[tool.setuptools_scm]
+write_to = "src/vgon/_version.py"
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
 
 [project.urls]
 Homepage = "https://vgon.funqitang.cn"

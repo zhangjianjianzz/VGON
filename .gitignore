@@ -227,3 +227,4 @@ wandb/
 
 # Notebooks checkpoints
 .ipynb_checkpoints/
+/src/vgon/_version.py

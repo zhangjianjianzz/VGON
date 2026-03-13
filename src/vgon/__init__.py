@@ -1,0 +1,1 @@
+from vgon._version import __version__

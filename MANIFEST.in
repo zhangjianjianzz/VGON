@@ -1,0 +1,27 @@
+include README.md
+include LICENSE
+include pyproject.toml
+
+graft src
+
+prune BP
+prune Degeneracy
+prune Gap
+prune docs
+prune .github
+prune .devcontainer
+prune .venv
+
+exclude test.ipynb
+exclude uv.lock
+
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude *.dylib
+global-exclude *.dll
+global-exclude *.pth
+global-exclude *.mat
+global-exclude *.png
+global-exclude *.pdf
+global-exclude *.ipynb
